@@ -4,7 +4,7 @@ import { UsersService } from '../../shared/services/users.service';
 import { User } from '../../shared/models/user.model';
 import { Message } from '../../shared/models/message.model';
 import { AuthService } from '../../shared/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
 @Component({
@@ -20,22 +20,33 @@ export class LoginComponent implements OnInit {
   constructor(
     private usersService: UsersService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(
+      (params: Params) => {
+        if (params.canLogin) {
+          this.showMessage({
+            text: 'Теперь вы можете ввойти в систему!',
+            type: 'success'
+          });
+        }
+      }
+    );
     this.form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.minLength(8)])
     });
   }
 
-  showMessage(text: string, type: string = 'danger' ) {
-    this.message = new Message(type, text);
+  showMessage(message: Message) {
+    this.message = message;
 
     window.setTimeout(() => {
       this.message.text = '';
-    }, 3000);
+    }, 5000);
   }
 
   onSubmit() {
@@ -47,10 +58,16 @@ export class LoginComponent implements OnInit {
             this.authService.login(user);
             this.router.navigate(['/registration']);
           } else {
-            this.showMessage('пароль не верный!');
+            this.showMessage({
+              text: 'Пароль не верный!',
+              type: 'danger'
+            });
           }
         } else {
-          this.showMessage('Такого пользователя не существует!');
+          this.showMessage({
+            text: 'Такого пользователя не существует!',
+            type: 'danger'
+          });
         }
       }
     );
