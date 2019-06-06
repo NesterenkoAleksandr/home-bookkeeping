@@ -1,8 +1,8 @@
 import { User } from '../models/user.model';
-import { Observable } from 'rxjs';
 
 export class AuthService {
   private isAuthenticated = false;
+
   constructor() { }
 
   login(user: User) {
