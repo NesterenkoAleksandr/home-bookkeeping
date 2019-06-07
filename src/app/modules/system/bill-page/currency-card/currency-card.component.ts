@@ -6,10 +6,10 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./currency-card.component.scss']
 })
 export class CurrencyCardComponent implements OnInit {
-  // @Input() bill: Bill;
+
   @Input() currency: any;
 
-  currencies: string[] = ['USD', 'RUB', 'UAH'];
+  currencies: string[] = ['USD', 'RUB'];
 
   constructor() { }
 
