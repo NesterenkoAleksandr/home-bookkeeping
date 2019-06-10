@@ -1,15 +1,16 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Category } from '../../shared/models/category.model';
 import { CategoriesService } from '../../shared/services/categories.service';
 import { Message } from 'src/app/modules/shared/models/message.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
   styleUrls: ['./edit-category.component.scss']
 })
-export class EditCategoryComponent implements OnInit {
+export class EditCategoryComponent implements OnInit, OnDestroy {
 
   @Input() categories: Category[];
   // tslint:disable-next-line:no-output-on-prefix
@@ -19,6 +20,8 @@ export class EditCategoryComponent implements OnInit {
   currentCategory: Category;
   message: Message;
 
+  sub1: Subscription;
+  
   constructor(private categoriesService: CategoriesService) { }
 
   ngOnInit() {
@@ -27,8 +30,8 @@ export class EditCategoryComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    // tslint:disable-next-line:prefer-const
-    let { name, capacity } = form.value;
+    const { name } = form.value;
+    let { capacity } = form.value;
 
     if (capacity < 0) {
       capacity *= -1;
@@ -36,7 +39,7 @@ export class EditCategoryComponent implements OnInit {
 
     const category = new Category(name, capacity, +this.currentCategoryId);
 
-    this.categoriesService.updateCategory(category).subscribe(
+    this.sub1 = this.categoriesService.updateCategory(category).subscribe(
       (cat: Category) => {
         this.onCategoryEdit.emit(category);
         this.message.text = 'Категория успешно отредактрована.';
@@ -46,7 +49,13 @@ export class EditCategoryComponent implements OnInit {
   }
 
   onCategoryChange() {
-    this.currentCategory = this.categories.find(c => c.id === +this.currentCategoryId);
+    this.currentCategory = this.categories.find(category => category.id === +this.currentCategoryId);
+  }
+
+  ngOnDestroy() {
+    if (this.sub1) {
+      this.sub1.unsubscribe();
+    }
   }
 
 }

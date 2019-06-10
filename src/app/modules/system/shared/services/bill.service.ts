@@ -14,8 +14,12 @@ export class BillService {
   constructor(private http: HttpClient) { }
 
   getBill(): Observable<Bill> {
-    return this.http.get<Bill>(`${ environment.apiUrl }/bill`).pipe(
-      map ((response: Bill) => response)
+    return this.http.get<Bill>(`${ environment.apiUrl }/bill`);
+  }
+
+  updateBill(bill: Bill): Observable<Bill> {
+    return this.http.put(`${ environment.apiUrl }/bill`, bill).pipe(
+      map((res: Bill) => res)
     );
   }
 

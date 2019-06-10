@@ -14,7 +14,7 @@
     }
   ],
   "bill": {
-    "value": 700,
+    "value": 2934,
     "currency": "EUR"
   },
   "categories": [
@@ -37,6 +37,21 @@
       "name": "Новая",
       "capacity": 12,
       "id": 4
+    },
+    {
+      "name": "Каспер",
+      "capacity": 1,
+      "id": 5
+    },
+    {
+      "name": "Новая1",
+      "capacity": 10,
+      "id": 6
+    },
+    {
+      "name": "Новая2",
+      "capacity": 100,
+      "id": 7
     }
   ],
   "events": [
@@ -79,6 +94,38 @@
       "date": "10.06.2017 14:01:58",
       "id": 5,
       "description": "Заправка + проход ТО"
+    },
+    {
+      "type": "income",
+      "amount": 10,
+      "category": 4,
+      "date": "10.06.2019 15:08:52",
+      "description": "This is Item one",
+      "id": 6
+    },
+    {
+      "type": "outcome",
+      "amount": 11,
+      "category": 4,
+      "date": "10.06.2019 15:10:16",
+      "description": "ррр",
+      "id": 7
+    },
+    {
+      "type": "outcome",
+      "amount": 12,
+      "category": 4,
+      "date": "10.06.2019 15:10:59",
+      "description": "This is Item one",
+      "id": 8
+    },
+    {
+      "type": "outcome",
+      "amount": 13,
+      "category": null,
+      "date": "10.06.2019 15:32:00",
+      "description": "ert",
+      "id": 9
     }
   ]
 }

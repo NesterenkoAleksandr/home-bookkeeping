@@ -3,7 +3,7 @@
     Страница планирования <span class="sparkline bar"></span>
   </h3>
 </div>
-<section class="section">
+<section class="section" *ngIf="isLoaded">
   <div class="row">
     <div class="col-md-12">
       <div class="card">
@@ -74,4 +74,7 @@
       </div>
     </div>
   </div>
+</section>
+<section class="section" *ngIf="!isLoaded">
+  Loading...
 </section>
