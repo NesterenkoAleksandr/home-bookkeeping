@@ -33,11 +33,30 @@ export class PlanningPageComponent implements OnInit {
           this.categories = data[1];
           this.events = data[2];
 
-          console.log(data);
-
           this.isLoaded = true;
         }
       );
+  }
+
+  getCategoryCost(category: Category): number {
+    const categoryEvents: AppEvent[] = this.events.filter(event => event.category === category.id && event.type === 'outcome');
+
+    return categoryEvents.reduce((total, event) => total += event.amount, 0);
+  }
+
+  private getPercent(category: Category): number {
+    const percent = (100 * this.getCategoryCost(category)) / category.capacity;
+    return percent > 100 ? 100 : percent;
+  }
+
+  getCategoryUsingPercent(category: Category): string {
+    return `${this.getPercent(category)}%`;
+  }
+
+  getCategoryColorClass(category: Category): string {
+    const percent = this.getPercent(category);
+
+    return percent < 60 ? 'success' : (percent >= 100 ? 'danger' : 'warning');
   }
 
 }

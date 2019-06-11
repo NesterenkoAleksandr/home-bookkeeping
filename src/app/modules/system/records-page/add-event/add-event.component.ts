@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import { EventsService } from '../../shared/services/events.service';
 import { BillService } from '../../shared/services/bill.service';
 import { Bill } from '../../shared/models/bill.model';
-import { mergeMap, map, mergeAll } from 'rxjs/operators';
+import { mergeMap } from 'rxjs/operators';
 import { Message } from 'src/app/modules/shared/models/message.model';
 import { Subscription } from 'rxjs';
 
