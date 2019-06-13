@@ -32,6 +32,12 @@ export class LoginComponent implements OnInit {
             text: 'Теперь вы можете ввойти в систему!',
             type: 'success'
           });
+        // tslint:disable-next-line:no-string-literal
+        } else if (params['accessDenied']) {
+          this.showMessage({
+            text: 'Для работы с системой вам необходимо войти',
+            type: 'warning'
+          });
         }
       }
     );
