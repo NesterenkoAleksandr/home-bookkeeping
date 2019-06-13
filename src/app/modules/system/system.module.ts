@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { SharedModule } from '../shared/shared.module';
@@ -52,11 +51,10 @@ import { FilterPipe } from './shared/pipes/filter.pipe';
     FilterPipe
   ],
   imports: [
+    NgxChartsModule,
     CommonModule,
     SharedModule,
-    SystemRoutingModule,
-    NgxChartsModule,
-    BrowserAnimationsModule
+    SystemRoutingModule
   ],
   providers: [
     BillService,

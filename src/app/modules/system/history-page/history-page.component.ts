@@ -73,10 +73,10 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
 
     this.filteredEvents = this.filteredEvents
       .filter(event => {
-        return filterData.types.indexOf(event.type) !== -1;
+        return filterData.types.length ? filterData.types.indexOf(event.type) !== -1 : event;
       })
       .filter(event => {
-        return filterData.categories.indexOf(event.category.toString()) !== -1;
+        return filterData.categories.length ? filterData.categories.indexOf(event.category.toString()) !== -1 : event;
       }).filter(event => {
         const momentDate = moment(event.date, 'DD.MM.YYYY HH:mm:ss');
         return momentDate.isBetween(startPeriod, endPeriod);
