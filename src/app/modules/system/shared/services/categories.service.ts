@@ -24,6 +24,10 @@ export class CategoriesService {
     );
   }
 
+  getCategoryById(id: number): Observable<Category> {
+    return this.http.get<Category>(`${ environment.apiUrl }/categories/${id}`);
+  }
+
   updateCategory(category: Category): Observable<Category> {
     return this.http.put(`${ environment.apiUrl }/categories/${ category.id }`, category).pipe(
       map((response: Category) => response)

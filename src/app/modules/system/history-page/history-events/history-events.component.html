@@ -39,10 +39,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let event of events; let idx = index">
+              <tr *ngFor="let event of events | filter: searchValue:searchField; let idx = index">
                 <th scope="row">{{ idx + 1 }}</th>
                 <td>{{ event?.amount | number: '1.2' }}</td>
-                <td>{{ event?.date | moment: 'DD.mm.YYYY HH:mm'}}</td>
+                <td>{{ event?.date | moment: 'DD.MM.YYYY HH:mm'}}</td>
                 <td>{{ event?.categoryName }}</td>
                 <td>
                   <span class="label label-success" *ngIf="event?.type === 'income'">Доход</span>

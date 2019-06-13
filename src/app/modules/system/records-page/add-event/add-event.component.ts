@@ -79,7 +79,7 @@ export class AddEventComponent implements OnInit, OnDestroy {
       this.sub2 = this.billService.updateBill({value, currency: bill.currency}).pipe(
         mergeMap(() => this.eventsService.addEvent(event))).subscribe(
           () => {
-            // Если не скинуть флорму, тогда сработает ошибка валидации на поле "description"
+            // Если не скинуть форму, тогда сработает ошибка валидации на поле "description"
             form.reset();
             form.setValue({
               amount: 0,
