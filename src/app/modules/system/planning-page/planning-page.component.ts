@@ -6,6 +6,7 @@ import { combineLatest } from 'rxjs';
 import { Bill } from '../shared/models/bill.model';
 import { Category } from '../shared/models/category.model';
 import { AppEvent } from '../shared/models/event.model';
+import { Title } from '@angular/platform-browser';
 
 
 @Component({
@@ -23,8 +24,9 @@ export class PlanningPageComponent implements OnInit {
   constructor(
     private billService: BillService,
     private categoriesService: CategoriesService,
-    private eventsService: EventsService
-  ) { }
+    private eventsService: EventsService,
+    private title: Title) {
+      title.setTitle('Домашняя бухгалтерия | Страница планирования'); }
 
   ngOnInit() {
     combineLatest(this.billService.getBill(), this.categoriesService.getCategories(), this.eventsService.getEvents()).subscribe(

@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService } from '../../shared/services/users.service';
 import { User } from '../../shared/models/user.model';
 import { Message } from '../../shared/models/message.model';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { fadeStateTrigger } from '../../shared/animations/fade.animation';
+import { Title, Meta } from '@angular/platform-browser';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations: [fadeStateTrigger]
 })
 export class LoginComponent implements OnInit {
 
@@ -21,8 +24,16 @@ export class LoginComponent implements OnInit {
     private usersService: UsersService,
     private authService: AuthService,
     private router: Router,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private title: Title,
+    private meta: Meta
+  ) {
+    title.setTitle('Домашняя бухгалтерия | Вход в систему');
+    meta.addTags([
+      {name: 'keywords', tags: 'логин, авторизация, вход, система'},
+      {name: 'description', tags: 'Страница для входа в систему'}
+    ]);
+  }
 
   ngOnInit() {
     this.route.queryParams.subscribe(
@@ -32,7 +43,7 @@ export class LoginComponent implements OnInit {
             text: 'Теперь вы можете ввойти в систему!',
             type: 'success'
           });
-        // tslint:disable-next-line:no-string-literal
+          // tslint:disable-next-line:no-string-literal
         } else if (params['accessDenied']) {
           this.showMessage({
             text: 'Для работы с системой вам необходимо войти',
@@ -78,5 +89,4 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
 }

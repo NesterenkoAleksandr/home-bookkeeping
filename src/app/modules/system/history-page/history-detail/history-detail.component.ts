@@ -7,6 +7,7 @@ import { CategoriesService } from '../../shared/services/categories.service';
 import { mergeMap } from 'rxjs/operators';
 import { AppEvent } from '../../shared/models/event.model';
 import { Category } from '../../shared/models/category.model';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-history-detail',
@@ -20,7 +21,13 @@ export class HistoryDetailComponent implements OnInit, OnDestroy {
   isLoaded = false;
   sub1: Subscription;
 
-  constructor(private route: ActivatedRoute, private eventsService: EventsService, private categoriesService: CategoriesService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private eventsService: EventsService,
+    private categoriesService: CategoriesService,
+    private title: Title) {
+    title.setTitle('Домашняя бухгалтерия | Страница счета | Детально');
+  }
 
   ngOnInit() {
     this.sub1 = this.route.params.pipe(

@@ -6,6 +6,7 @@ import * as moment from 'moment';
 
 import { Category } from '../shared/models/category.model';
 import { AppEvent } from '../shared/models/event.model';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-history-page',
@@ -23,10 +24,12 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
 
   sub1: Subscription;
 
-  constructor(private categoriesService: CategoriesService, private eventsService: EventsService) { }
+  constructor(private categoriesService: CategoriesService, private eventsService: EventsService, private title: Title) {
+    title.setTitle('Домашняя бухгалтерия | Страница истории');
+  }
 
   ngOnInit() {
-    this.sub1 = combineLatest( this.categoriesService.getCategories(), this.eventsService.getEvents()).subscribe(
+    this.sub1 = combineLatest(this.categoriesService.getCategories(), this.eventsService.getEvents()).subscribe(
       (data: [Category[], AppEvent[]]) => {
         this.categories = data[0];
         this.events = data[1];

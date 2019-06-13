@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'system', loadChildren: './modules/system/system.module#SystemModule'}
+  {path: 'system', loadChildren: './modules/system/system.module#SystemModule'},
+  {path: '404', component: NotFoundComponent}
+  // {path: '**', component: NotFoundComponent}
 ];
 
 @NgModule({

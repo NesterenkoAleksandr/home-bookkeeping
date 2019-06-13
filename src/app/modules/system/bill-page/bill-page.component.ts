@@ -5,6 +5,7 @@ import { combineLatest } from 'rxjs';
 import { BillService } from '../shared/services/bill.service';
 import { Bill } from '../shared/models/bill.model';
 import { delay } from 'q';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-bill-page',
@@ -20,7 +21,9 @@ export class BillPageComponent implements OnInit, OnDestroy {
 
   isLoaded = false;
 
-  constructor(private billService: BillService) { }
+  constructor(private billService: BillService, private title: Title) {
+    title.setTitle('Домашняя бухгалтерия | Страница счета');
+  }
 
   ngOnInit() {
     this.sub1 = combineLatest(
@@ -51,6 +54,6 @@ export class BillPageComponent implements OnInit, OnDestroy {
       (currency: any) => {
         this.currency = currency;
         this.isLoaded = true;
-    });
+      });
   }
 }
