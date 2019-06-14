@@ -21,7 +21,7 @@ export class BillCardComponent implements OnInit {
     this.dollar = this.bill.value / this.getCurrency('USD').rate;
     this.rub = this.bill.value / this.getCurrency('RUB').rate;
     this.eur = this.bill.value / this.getCurrency('EUR').rate;
-  }
+   }
 
   private getCurrency(name: string): any {
     return this.currency.find((item: any) => item.cc === name.toUpperCase());
