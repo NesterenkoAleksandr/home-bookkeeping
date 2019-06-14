@@ -16,8 +16,8 @@ export class HistoryFilterComponent {
 
   timePeriods = [
     {type: 'd', label: 'За сегодня'},
-    {type: 'w', label: 'За текущую неделю'},
-    {type: 'M', label: 'За текущий месяц'}
+    {type: 'w', label: 'За неделю'},
+    {type: 'M', label: 'За месяц'}
   ];
 
   types = [
@@ -25,7 +25,7 @@ export class HistoryFilterComponent {
     {type: 'outcome', label: 'Расход'}
   ];
 
-  selectedPeriod = 'd';
+  selectedPeriod = 'M';
   selectedTypes = [];
   selectedCategories = [];
 
@@ -34,7 +34,7 @@ export class HistoryFilterComponent {
   closeFilter() {
     this.selectedCategories = [];
     this.selectedTypes = [];
-    this.selectedPeriod = 'd';
+    this.selectedPeriod = 'M';
     this.onFilterCancel.emit();
   }
 

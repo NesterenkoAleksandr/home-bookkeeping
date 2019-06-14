@@ -17,7 +17,7 @@
         <label class="control-label">Выберите тип</label>
         <div *ngFor="let type of types">
           <label>
-            <input class="radio" name="type" type="radio" [value]="type?.type" required [ngModel]="'outcome'">
+            <input class="radio" name="type" style="display: none;" type="radio" [value]="type?.type" required [ngModel]="'outcome'">
             <span>{{ type?.label }}</span>
           </label>
         </div>

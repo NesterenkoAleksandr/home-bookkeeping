@@ -19,7 +19,7 @@
           <label class="control-label">Выберите тип события</label>
           <div>
             <label *ngFor="let type of types">
-              <input class="checkbox" type="checkbox" [value]="type.type" (change)="handleChangeType($event.target)">
+              <input class="checkbox" style="display: none;" type="checkbox" [value]="type.type" (change)="handleChangeType($event.target)">
               <span>{{ type.label }}</span>
             </label>
           </div>
@@ -28,7 +28,7 @@
           <label class="control-label">Выберите категории</label>
           <div>
             <label *ngFor="let category of categories">
-              <input class="checkbox" type="checkbox" [value]="category.id" (change)="handleChangeCategory($event.target)">
+              <input class="checkbox" style="display: none;" type="checkbox" [value]="category.id" (change)="handleChangeCategory($event.target)">
               <span>{{ category.name }}</span>
             </label>
           </div>
