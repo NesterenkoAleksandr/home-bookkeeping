@@ -23,10 +23,9 @@ export class BillService {
     );
   }
 
-  getCurrency(base: string = 'EUR'): Observable<any> {
-    // Free subscription Plan does not support &base. Now.
-    return this.http.get(`${ environment.apiCurrency }&symbols=USD,RUB,UAH,PLN&format=1`).pipe(
-      map ((response: any) => response)
+  getCurrency(filter: string[] = ['USD', 'RUB', 'EUR', 'UAH']): Observable<any> {
+    return this.http.get(`${ environment.apiCurrency }`).pipe(
+      map ((response: any) => response.filter(item => filter.some(value => item.cc === value.toUpperCase())))
     );
   }
 }

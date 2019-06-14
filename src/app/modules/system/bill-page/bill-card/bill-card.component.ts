@@ -13,15 +13,18 @@ export class BillCardComponent implements OnInit {
 
   dollar: number;
   rub: number;
-  uah: number;
+  eur: number;
 
   constructor() { }
 
   ngOnInit() {
-    const { rates } = this.currency;
-    this.dollar = rates.USD * this.bill.value;
-    this.rub = rates.RUB * this.bill.value;
-    this.uah = rates.UAH * this.bill.value;
+    this.dollar = this.bill.value / this.getCurrency('USD').rate;
+    this.rub = this.bill.value / this.getCurrency('RUB').rate;
+    this.eur = this.bill.value / this.getCurrency('EUR').rate;
+  }
+
+  private getCurrency(name: string): any {
+    return this.currency.find((item: any) => item.cc === name.toUpperCase());
   }
 
 }
