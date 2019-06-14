@@ -21,8 +21,6 @@ export class UsersService {
   }
 
   addUser(user: User): Observable<User> {
-    return this.http.post<User>(`${ environment.apiUrl}/users`, user).pipe(
-      map((response: User) => response)
-    );
+    return this.http.post<User>(`${ environment.apiUrl}/users`, user);
   }
 }

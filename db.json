@@ -5,16 +5,10 @@
       "email": "kasperaa@rambler.ru",
       "password": "12345678",
       "name": "Александр"
-    },
-    {
-      "email": "kasperaa@rambler.ru2",
-      "password": "111111111",
-      "name": "111",
-      "id": 2
     }
   ],
   "bill": {
-    "value": 2051,
+    "value": 1929,
     "currency": "EUR"
   },
   "categories": [
@@ -32,11 +26,6 @@
       "name": "Машина",
       "capacity": 6000,
       "id": 3
-    },
-    {
-      "name": "Бухло",
-      "capacity": 1000,
-      "id": 4
     }
   ],
   "events": [
@@ -79,22 +68,6 @@
       "date": "10.06.2019 14:01:58",
       "id": 5,
       "description": "Заправка + проход ТО"
-    },
-    {
-      "type": "outcome",
-      "amount": 763,
-      "category": 4,
-      "date": "09.06.2019 13:26:47",
-      "description": "This is Item one",
-      "id": 6
-    },
-    {
-      "type": "outcome",
-      "amount": 120,
-      "category": 4,
-      "date": "13.06.2019 15:29:08",
-      "description": "ыыыыыыыы",
-      "id": 7
     }
   ]
 }

@@ -19,9 +19,7 @@ export class CategoriesService {
   }
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${ environment.apiUrl }/categories`).pipe(
-      map ((categories: Category[]) => categories)
-    );
+    return this.http.get<Category[]>(`${ environment.apiUrl }/categories`);
   }
 
   getCategoryById(id: number): Observable<Category> {

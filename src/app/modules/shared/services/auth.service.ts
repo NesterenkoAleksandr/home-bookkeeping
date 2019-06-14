@@ -6,6 +6,7 @@ export class AuthService {
   constructor() { }
 
   login(user: User) {
+    user.password = '';
     window.localStorage.setItem('user', JSON.stringify(user));
     this.isAuthenticated = true;
   }
